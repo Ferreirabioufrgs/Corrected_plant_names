@@ -1,0 +1,24 @@
+
+
+# get_flora_corrected_names 
+source("https://gist.githubusercontent.com/higuchip/a5830ae2d0969e586e9bec8b5421107b/raw/a4da0888bd0444b8730369457fc1c70886fcf574/get_flora_corrected_names.R")
+
+# correct_species_names
+source("https://gist.githubusercontent.com/higuchip/5200c25897e0625b236d0bea1d715c84/raw/2a85ed10f1f318b14a28162be6f76dd4d27c03bb/correct_species_names.R")
+
+especies <- c("Dickonia sellowiana", "Allophylus edulis", "Calyptranthes concinna")
+correcao <- get_flora_corrected_names(especies)
+correcao
+
+nomes_originais<- unique(dados$Species)
+
+correcao <- get_flora_corrected_names(nomes_originais)
+
+head(correcao)
+edit(correcao)
+
+
+correcao[84,2] <- "Lauraceae 1"
+
+dados_corrigidos <- correct_species_names(dados, correcao, species_column_name = "Species")
+head(dados_corrigidos)
